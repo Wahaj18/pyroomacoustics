@@ -462,20 +462,10 @@ class DOA(object):
             )
 
             # stem for original doa
-            if K > 1:
-                for k in range(K):
-                    ax.plot(
-                        [azimuth_ref[k], azimuth_ref[k]],
-                        [base, base + height * alpha_ref[k]],
-                        linewidth=1.5,
-                        linestyle="-",
-                        color=blue,
-                        alpha=0.6,
-                    )
-            else:
+            for k in range(K):
                 ax.plot(
-                    [azimuth_ref, azimuth_ref],
-                    [base, base + height * alpha_ref],
+                    [azimuth_ref[k], azimuth_ref[k]],
+                    [base, base + height * alpha_ref[k]],
                     linewidth=1.5,
                     linestyle="-",
                     color=blue,
@@ -497,21 +487,10 @@ class DOA(object):
         )
 
         # stem for reconstructed doa
-        if K_est > 1:
-            for k in range(K_est):
-                ax.plot(
-                    [azimuth_recon[k], azimuth_recon[k]],
-                    [base, base + height * alpha_recon[k]],
-                    linewidth=1.5,
-                    linestyle="-",
-                    color=red,
-                    alpha=0.6,
-                )
-
-        else:
+        for k in range(K_est):
             ax.plot(
-                [azimuth_recon, azimuth_recon],
-                [base, base + height * alpha_recon],
+                [azimuth_recon[k], azimuth_recon[k]],
+                [base, base + height * alpha_recon[k]],
                 linewidth=1.5,
                 linestyle="-",
                 color=red,

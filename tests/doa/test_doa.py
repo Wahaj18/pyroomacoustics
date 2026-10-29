@@ -95,6 +95,17 @@ class TestDOA(unittest.TestCase):
         print("distance:", pra.doa.circ_dist(azimuth, doa.azimuth_recon))
         self.assertTrue(pra.doa.circ_dist(azimuth, doa.azimuth_recon) < tol)
 
+    def test_polar_plt_dirac_single_source(self):
+        import matplotlib
+
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+
+        doa = pra.doa.algorithms["MUSIC"](R, fs, nfft, c=c)
+        doa.locate_sources(X, freq_bins=freq_bins)
+        doa.polar_plt_dirac(azimuth_ref=np.array([azimuth]))
+        plt.close("all")
+
 
 if __name__ == "__main__":
     """
